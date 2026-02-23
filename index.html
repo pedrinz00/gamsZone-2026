@@ -209,7 +209,7 @@
             margin-top: 2rem;
         }
 
-        /* Cards de jogos */
+        /* Cards de jogos com imagens */
         .game-card {
             background: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(10px);
@@ -227,19 +227,35 @@
         }
 
         .game-image {
-            height: 160px;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(45deg, #0f172a, #2d1f3a);
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .game-card:hover .game-image img {
+            transform: scale(1.1);
+        }
+
+        .image-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-image i {
             font-size: 4rem;
             color: #ff3366;
-            filter: drop-shadow(2px 4px 6px black);
+            background: linear-gradient(45deg, #0f172a, #2d1f3a);
         }
 
         .game-overlay {
@@ -254,6 +270,7 @@
             justify-content: center;
             opacity: 0;
             transition: 0.3s;
+            z-index: 10;
         }
 
         .game-card:hover .game-overlay {
@@ -320,7 +337,7 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: bold;
-            z-index: 10;
+            z-index: 20;
             animation: pulse 1.5s infinite;
         }
 
@@ -660,18 +677,21 @@
         </section>
 
         <section class="games-grid" id="jogos">
-            <!-- Jogo 1: Block Blast - MAIS JOGADO DE 2026 [citation:7] -->
+            <!-- Jogo 1: Block Blast - MAIS JOGADO DE 2026 -->
             <div class="game-card" data-category="puzzle mobile">
                 <span class="hot-badge">#1 EM JANEIRO</span>
                 <div class="game-image">
-                    <i>🧩</i>
+                    <img src="https://play-lh.googleusercontent.com/6R1qKJpQVpYyC1W5fQqXxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZx" 
+                         alt="Block Blast"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🧩</div>'">
+                    <div class="image-fallback" style="display: none;">🧩</div>
                     <div class="game-overlay">
                         <a href="https://poki.com.br/g/block-blast" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Block Blast</h3>
-                    <p>🔥 28 MILHÕES de downloads em janeiro! O jogo de puzzle mais jogado de 2026 [citation:7]</p>
+                    <p>🔥 28 MILHÕES de downloads em janeiro! O jogo de puzzle mais jogado de 2026</p>
                     <div class="game-meta">
                         <span class="game-category">Puzzle</span>
                         <span class="game-rating">★★★★★</span>
@@ -679,18 +699,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 2: Free Fire - Colaboração Jujutsu Kaisen [citation:7] -->
+            <!-- Jogo 2: Free Fire - Colaboração Jujutsu Kaisen -->
             <div class="game-card" data-category="battle mobile acao">
                 <span class="hot-badge">+26M DOWNLOADS</span>
                 <div class="game-image">
-                    <i>🔫</i>
+                    <img src="https://play-lh.googleusercontent.com/SrYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYyYy" 
+                         alt="Free Fire"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🔫</div>'">
+                    <div class="image-fallback" style="display: none;">🔫</div>
                     <div class="game-overlay">
                         <a href="https://ff.garena.com/" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Free Fire</h3>
-                    <p>Colaboração com Jujutsu Kaisen! 26 milhões de downloads em janeiro [citation:7]</p>
+                    <p>Colaboração com Jujutsu Kaisen! 26 milhões de downloads em janeiro</p>
                     <div class="game-meta">
                         <span class="game-category">Battle Royale</span>
                         <span class="game-rating">★★★★★</span>
@@ -698,18 +721,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 3: Roblox - Gigante Social [citation:3][citation:8] -->
+            <!-- Jogo 3: Roblox - Gigante Social -->
             <div class="game-card" data-category="browser mobile">
                 <span class="hot-badge">+200M JOGADORES</span>
                 <div class="game-image">
-                    <i>🎮</i>
+                    <img src="https://play-lh.googleusercontent.com/WNWZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZxZx" 
+                         alt="Roblox"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🎮</div>'">
+                    <div class="image-fallback" style="display: none;">🎮</div>
                     <div class="game-overlay">
                         <a href="https://www.roblox.com/" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Roblox</h3>
-                    <p>Mais de 200 milhões de jogadores mensais. O multiverso dos games [citation:8]</p>
+                    <p>Mais de 200 milhões de jogadores mensais. O multiverso dos games</p>
                     <div class="game-meta">
                         <span class="game-category">Plataforma</span>
                         <span class="game-rating">★★★★★</span>
@@ -717,18 +743,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 4: Space Waves - 1 MILHÃO de likes [citation:2] -->
+            <!-- Jogo 4: Space Waves - 1 MILHÃO de likes -->
             <div class="game-card" data-category="browser acao">
                 <span class="hot-badge">1M LIKES</span>
                 <div class="game-image">
-                    <i>🚀</i>
+                    <img src="https://images.crazygames.com/games/space-waves/cover-169.png" 
+                         alt="Space Waves"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🚀</div>'">
+                    <div class="image-fallback" style="display: none;">🚀</div>
                     <div class="game-overlay">
                         <a href="https://www.crazygames.com/game/space-waves" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Space Waves</h3>
-                    <p>O jogo de navegador mais amado! Mais de 1 milhão de likes no MSN Games [citation:2]</p>
+                    <p>O jogo de navegador mais amado! Mais de 1 milhão de likes no MSN Games</p>
                     <div class="game-meta">
                         <span class="game-category">Arcade</span>
                         <span class="game-rating">★★★★★</span>
@@ -736,18 +765,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 5: Thief Puzzle - 450k+ likes [citation:2] -->
+            <!-- Jogo 5: Thief Puzzle - 450k+ likes -->
             <div class="game-card" data-category="puzzle browser">
                 <span class="hot-badge">Viral</span>
                 <div class="game-image">
-                    <i>🕵️</i>
+                    <img src="https://images.crazygames.com/games/thief-puzzle/cover-169.png" 
+                         alt="Thief Puzzle"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🕵️</div>'">
+                    <div class="image-fallback" style="display: none;">🕵️</div>
                     <div class="game-overlay">
                         <a href="https://poki.com.br/g/thief-puzzle" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Thief Puzzle</h3>
-                    <p>Mais de 450 mil likes! Puzzle viral com situações hilárias [citation:2]</p>
+                    <p>Mais de 450 mil likes! Puzzle viral com situações hilárias</p>
                     <div class="game-meta">
                         <span class="game-category">Puzzle</span>
                         <span class="game-rating">★★★★★</span>
@@ -755,18 +787,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 6: Fortnite - Multiverso [citation:3][citation:8] -->
+            <!-- Jogo 6: Fortnite - Multiverso -->
             <div class="game-card" data-category="battle acao">
                 <span class="hot-badge">250M JOGADORES</span>
                 <div class="game-image">
-                    <i>🏆</i>
+                    <img src="https://images.crazygames.com/games/fortnite/cover-169.png" 
+                         alt="Fortnite"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🏆</div>'">
+                    <div class="image-fallback" style="display: none;">🏆</div>
                     <div class="game-overlay">
                         <a href="https://www.fortnite.com/" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Fortnite</h3>
-                    <p>Entre 200-250 milhões de jogadores ativos. Colaborações épicas [citation:8]</p>
+                    <p>Entre 200-250 milhões de jogadores ativos. Colaborações épicas</p>
                     <div class="game-meta">
                         <span class="game-category">Battle Royale</span>
                         <span class="game-rating">★★★★★</span>
@@ -774,18 +809,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 7: Hole.io - #1 em MAU [citation:4] -->
+            <!-- Jogo 7: Hole.io - #1 em MAU -->
             <div class="game-card" data-category="browser mobile">
                 <span class="hot-badge">#1 EM JOGADORES</span>
                 <div class="game-image">
-                    <i>🕳️</i>
+                    <img src="https://images.crazygames.com/games/hole-io/cover-169.png" 
+                         alt="Hole.io"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🕳️</div>'">
+                    <div class="image-fallback" style="display: none;">🕳️</div>
                     <div class="game-overlay">
                         <a href="https://poki.com.br/g/hole-io" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Hole.io</h3>
-                    <p>O jogo mais jogado de janeiro 2026 em MAU (usuários ativos mensais) [citation:4]</p>
+                    <p>O jogo mais jogado de janeiro 2026 em MAU (usuários ativos mensais)</p>
                     <div class="game-meta">
                         <span class="game-category">Arcade</span>
                         <span class="game-rating">★★★★★</span>
@@ -793,18 +831,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 8: Minecraft - Imortal [citation:3] -->
+            <!-- Jogo 8: Minecraft - Imortal -->
             <div class="game-card" data-category="aventura">
                 <span class="hot-badge">LENDA</span>
                 <div class="game-image">
-                    <i>⛏️</i>
+                    <img src="https://images.crazygames.com/games/minecraft-classic/cover-169.png" 
+                         alt="Minecraft"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'⛏️</div>'">
+                    <div class="image-fallback" style="display: none;">⛏️</div>
                     <div class="game-overlay">
                         <a href="https://classic.minecraft.net/" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Minecraft</h3>
-                    <p>O clássico que não morre. Jogue a versão Classic no navegador [citation:3]</p>
+                    <p>O clássico que não morre. Jogue a versão Classic no navegador</p>
                     <div class="game-meta">
                         <span class="game-category">Sandbox</span>
                         <span class="game-rating">★★★★★</span>
@@ -812,18 +853,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 9: Steal Brainrot Online - 300k likes [citation:2] -->
+            <!-- Jogo 9: Steal Brainrot Online - 300k likes -->
             <div class="game-card" data-category="browser multiplayer">
                 <span class="hot-badge">+300K LIKES</span>
                 <div class="game-image">
-                    <i>🧠</i>
+                    <img src="https://images.crazygames.com/games/steal-brainrot-online/cover-169.png" 
+                         alt="Steal Brainrot Online"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🧠</div>'">
+                    <div class="image-fallback" style="display: none;">🧠</div>
                     <div class="game-overlay">
                         <a href="https://www.crazygames.com/game/steal-brainrot-online" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Steal Brainrot Online</h3>
-                    <p>Jogo multiplayer viral com memes! Quase 300 mil likes [citation:2]</p>
+                    <p>Jogo multiplayer viral com memes! Quase 300 mil likes</p>
                     <div class="game-meta">
                         <span class="game-category">Multiplayer</span>
                         <span class="game-rating">★★★★☆</span>
@@ -831,18 +875,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 10: Krunker.io [citation:6] -->
+            <!-- Jogo 10: Krunker.io -->
             <div class="game-card" data-category="browser acao">
                 <span class="hot-badge">FPS POPULAR</span>
                 <div class="game-image">
-                    <i>🎯</i>
+                    <img src="https://images.crazygames.com/games/krunker-io/cover-169.png" 
+                         alt="Krunker.io"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🎯</div>'">
+                    <div class="image-fallback" style="display: none;">🎯</div>
                     <div class="game-overlay">
                         <a href="https://krunker.io/" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Krunker.io</h3>
-                    <p>FPS pixelado com comunidade gigante em 2026 [citation:6]</p>
+                    <p>FPS pixelado com comunidade gigante em 2026</p>
                     <div class="game-meta">
                         <span class="game-category">FPS</span>
                         <span class="game-rating">★★★★☆</span>
@@ -850,18 +897,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 11: Blockbuster Puzzle - 320k likes [citation:2] -->
+            <!-- Jogo 11: Blockbuster Puzzle - 320k likes -->
             <div class="game-card" data-category="puzzle browser">
                 <span class="hot-badge">320K LIKES</span>
                 <div class="game-image">
-                    <i>🎲</i>
+                    <img src="https://images.crazygames.com/games/blockbuster-puzzle/cover-169.png" 
+                         alt="Blockbuster Puzzle"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🎲</div>'">
+                    <div class="image-fallback" style="display: none;">🎲</div>
                     <div class="game-overlay">
                         <a href="https://www.crazygames.com/game/blockbuster-puzzle" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>Blockbuster Puzzle</h3>
-                    <p>Tetris modernizado com 320 mil likes no MSN Games [citation:2]</p>
+                    <p>Tetris modernizado com 320 mil likes no MSN Games</p>
                     <div class="game-meta">
                         <span class="game-category">Puzzle</span>
                         <span class="game-rating">★★★★★</span>
@@ -869,18 +919,21 @@
                 </div>
             </div>
 
-            <!-- Jogo 12: GeoGuessr [citation:6] -->
+            <!-- Jogo 12: GeoGuessr -->
             <div class="game-card" data-category="browser">
                 <span class="hot-badge">COMPETITIVO</span>
                 <div class="game-image">
-                    <i>🌍</i>
+                    <img src="https://images.crazygames.com/games/geoguessr/cover-169.png" 
+                         alt="GeoGuessr"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'image-fallback\'🌍</div>'">
+                    <div class="image-fallback" style="display: none;">🌍</div>
                     <div class="game-overlay">
                         <a href="https://www.geoguessr.com/" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
                     <h3>GeoGuessr</h3>
-                    <p>Adivinhe onde você está no mundo! Campeonatos globais em 2026 [citation:6]</p>
+                    <p>Adivinhe onde você está no mundo! Campeonatos globais em 2026</p>
                     <div class="game-meta">
                         <span class="game-category">Quiz</span>
                         <span class="game-rating">★★★★★</span>
@@ -890,98 +943,4 @@
         </section>
 
         <!-- Ranking dos mais jogados de 2026 -->
-        <section class="ranking-section" id="ranking">
-            <div class="ranking-title">
-                <span style="font-size: 3rem;">🏆</span>
-                <h2>Top 5 Mais Jogados de 2026</h2>
-            </div>
-            <div class="ranking-list">
-                <div class="ranking-item">
-                    <div class="ranking-position">#1</div>
-                    <div class="ranking-info">
-                        <h4>Block Blast</h4>
-                        <p>28 milhões de downloads em janeiro [citation:7]</p>
-                    </div>
-                </div>
-                <div class="ranking-item">
-                    <div class="ranking-position">#2</div>
-                    <div class="ranking-info">
-                        <h4>Free Fire</h4>
-                        <p>26 milhões de downloads [citation:7]</p>
-                    </div>
-                </div>
-                <div class="ranking-item">
-                    <div class="ranking-position">#3</div>
-                    <div class="ranking-info">
-                        <h4>Roblox</h4>
-                        <p>22.6 milhões de downloads [citation:7]</p>
-                    </div>
-                </div>
-                <div class="ranking-item">
-                    <div class="ranking-position">#4</div>
-                    <div class="ranking-info">
-                        <h4>Hole.io</h4>
-                        <p>#1 em MAU (usuários ativos) [citation:4]</p>
-                    </div>
-                </div>
-                <div class="ranking-item">
-                    <div class="ranking-position">#5</div>
-                    <div class="ranking-info">
-                        <h4>Space Waves</h4>
-                        <p>1 milhão de likes [citation:2]</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="featured-section" id="destaques">
-            <div class="featured-title">
-                <h2>🌟 Os Fenômenos de 2026</h2>
-            </div>
-
-            <div class="featured-grid">
-                <div class="featured-card">
-                    <div class="featured-icon">🎮</div>
-                    <div class="featured-content">
-                        <h3>GTA VI</h3>
-                        <p>O jogo mais aguardado da década - Lançamento 19/11/2026 [citation:10]</p>
-                        <a href="https://www.rockstargames.com/br/" target="_blank" rel="noopener noreferrer" class="featured-btn">Saiba Mais</a>
-                    </div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="featured-icon">⚔️</div>
-                    <div class="featured-content">
-                        <h3>Call of Duty: Black Ops 7</h3>
-                        <p>O novo contendente do ano [citation:8]</p>
-                        <a href="https://www.callofduty.com/" target="_blank" rel="noopener noreferrer" class="featured-btn">Ver Mais</a>
-                    </div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="featured-icon">🐺</div>
-                    <div class="featured-content">
-                        <h3>Marvel‘s Wolverine</h3>
-                        <p>Um dos mais aguardados de 2026 [citation:10]</p>
-                        <a href="https://www.playstation.com/" target="_blank" rel="noopener noreferrer" class="featured-btn">Ver Mais</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>GameZone 2026</h3>
-                <p>Seu portal com os jogos mais atuais e populares do momento. Atualizado com as trends de 2026.</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Links Rápidos</h3>
-                <ul>
-                    <li><a href="#">Sobre Nós</a></li>
-                    <li><a href="#">Carreiras</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Parceiros</a></li>
-               
+        <section class="ranking-section" id="
