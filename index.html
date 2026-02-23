@@ -207,6 +207,7 @@
             font-weight: bold;
             transform: translateY(20px);
             transition: 0.3s;
+            display: inline-block;
         }
 
         .game-card:hover .play-btn {
@@ -315,10 +316,38 @@
             border-radius: 25px;
             cursor: pointer;
             transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .featured-btn:hover {
             background: #e94560;
+        }
+
+        /* Aviso de nova aba */
+        .external-link-warning {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0f3460;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            border-left: 4px solid #e94560;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         /* Rodapé */
@@ -373,6 +402,8 @@
             align-items: center;
             justify-content: center;
             transition: 0.3s;
+            text-decoration: none;
+            color: white;
         }
 
         .social-icon:hover {
@@ -429,80 +460,80 @@
     <nav>
         <ul>
             <li><a href="#" class="active">Início</a></li>
-            <li><a href="#">Jogos</a></li>
-            <li><a href="#">Categorias</a></li>
-            <li><a href="#">Novidades</a></li>
-            <li><a href="#">Comunidade</a></li>
-            <li><a href="#">Suporte</a></li>
+            <li><a href="#jogos">Jogos</a></li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="#destaques">Destaques</a></li>
+            <li><a href="#novidades">Novidades</a></li>
+            <li><a href="#suporte">Suporte</a></li>
         </ul>
     </nav>
 
     <main class="container">
         <section class="search-section">
             <div class="search-box">
-                <input type="text" placeholder="Buscar jogos...">
-                <button>🔍 Buscar</button>
+                <input type="text" placeholder="Buscar jogos..." id="searchInput">
+                <button onclick="searchGames()">🔍 Buscar</button>
             </div>
         </section>
 
-        <section class="categories">
-            <button class="category-btn">Todos</button>
-            <button class="category-btn">Ação</button>
-            <button class="category-btn">Aventura</button>
-            <button class="category-btn">Estratégia</button>
-            <button class="category-btn">RPG</button>
-            <button class="category-btn">Esportes</button>
-            <button class="category-btn">Corrida</button>
+        <section class="categories" id="categorias">
+            <button class="category-btn" onclick="filterGames('todos')">Todos</button>
+            <button class="category-btn" onclick="filterGames('acao')">Ação</button>
+            <button class="category-btn" onclick="filterGames('aventura')">Aventura</button>
+            <button class="category-btn" onclick="filterGames('estrategia')">Estratégia</button>
+            <button class="category-btn" onclick="filterGames('esportes')">Esportes</button>
+            <button class="category-btn" onclick="filterGames('puzzle')">Puzzle</button>
+            <button class="category-btn" onclick="filterGames('clássico')">Clássico</button>
         </section>
 
-        <section class="games-grid">
-            <!-- Card de jogo 1 -->
-            <div class="game-card">
+        <section class="games-grid" id="jogos">
+            <!-- Card de jogo 1 - Jogo Real -->
+            <div class="game-card" data-category="rpg aventura">
                 <div class="game-image">
                     <i>⚔️</i>
                     <div class="game-overlay">
-                        <a href="#" class="play-btn">Jogar Agora</a>
+                        <a href="https://www.crazygames.com/game/forgotten-hearts" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
-                    <h3>Dragon Quest</h3>
-                    <p>Uma aventura épica em um mundo de fantasia</p>
+                    <h3>Forgotten Hearts</h3>
+                    <p>RPG de ação com batalhas épicas e história envolvente</p>
                     <div class="game-meta">
-                        <span class="game-category">RPG</span>
+                        <span class="game-category">RPG/Aventura</span>
                         <span class="game-rating">★★★★★</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card de jogo 2 -->
-            <div class="game-card">
+            <!-- Card de jogo 2 - Jogo Real -->
+            <div class="game-card" data-category="corrida">
                 <div class="game-image">
                     <i>🏎️</i>
                     <div class="game-overlay">
-                        <a href="#" class="play-btn">Jogar Agora</a>
+                        <a href="https://www.crazygames.com/game/moto-x3m" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
-                    <h3>Speed Racers</h3>
-                    <p>Corridas emocionantes em pistas radicais</p>
+                    <h3>Moto X3M</h3>
+                    <p>Corridas de moto com obstáculos e manobras radicais</p>
                     <div class="game-meta">
                         <span class="game-category">Corrida</span>
-                        <span class="game-rating">★★★★☆</span>
+                        <span class="game-rating">★★★★★</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card de jogo 3 -->
-            <div class="game-card">
+            <!-- Card de jogo 3 - Jogo Real -->
+            <div class="game-card" data-category="esportes">
                 <div class="game-image">
                     <i>⚽</i>
                     <div class="game-overlay">
-                        <a href="#" class="play-btn">Jogar Agora</a>
+                        <a href="https://www.crazygames.com/game/football-legends" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
-                    <h3>Champions League</h3>
-                    <p>O melhor futebol em suas mãos</p>
+                    <h3>Football Legends</h3>
+                    <p>Jogo de futebol com craques e jogadas espetaculares</p>
                     <div class="game-meta">
                         <span class="game-category">Esportes</span>
                         <span class="game-rating">★★★★★</span>
@@ -510,17 +541,17 @@
                 </div>
             </div>
 
-            <!-- Card de jogo 4 -->
-            <div class="game-card">
+            <!-- Card de jogo 4 - Jogo Real -->
+            <div class="game-card" data-category="acao">
                 <div class="game-image">
-                    <i>🎯</i>
+                    <i>🔫</i>
                     <div class="game-overlay">
-                        <a href="#" class="play-btn">Jogar Agora</a>
+                        <a href="https://www.crazygames.com/game/shell-shockers" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
-                    <h3>Zombie Shooter</h3>
-                    <p>Sobreviva ao apocalipse zumbi</p>
+                    <h3>Shell Shockers</h3>
+                    <p>FPS multiplayer com ovos e muita ação</p>
                     <div class="game-meta">
                         <span class="game-category">Ação</span>
                         <span class="game-rating">★★★★☆</span>
@@ -528,17 +559,17 @@
                 </div>
             </div>
 
-            <!-- Card de jogo 5 -->
-            <div class="game-card">
+            <!-- Card de jogo 5 - Jogo Real -->
+            <div class="game-card" data-category="puzzle">
                 <div class="game-image">
                     <i>🧩</i>
                     <div class="game-overlay">
-                        <a href="#" class="play-btn">Jogar Agora</a>
+                        <a href="https://www.crazygames.com/game/2048" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
-                    <h3>Brain Puzzle</h3>
-                    <p>Desafie sua mente com quebra-cabeças</p>
+                    <h3>2048</h3>
+                    <p>Combine os números e chegue ao 2048</p>
                     <div class="game-meta">
                         <span class="game-category">Puzzle</span>
                         <span class="game-rating">★★★★★</span>
@@ -546,26 +577,62 @@
                 </div>
             </div>
 
-            <!-- Card de jogo 6 -->
-            <div class="game-card">
+            <!-- Card de jogo 6 - Jogo Real -->
+            <div class="game-card" data-category="estrategia">
                 <div class="game-image">
                     <i>🏰</i>
                     <div class="game-overlay">
-                        <a href="#" class="play-btn">Jogar Agora</a>
+                        <a href="https://www.crazygames.com/game/age-of-war" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
                     </div>
                 </div>
                 <div class="game-info">
-                    <h3>Kingdom Wars</h3>
-                    <p>Construa seu império e conquiste reinos</p>
+                    <h3>Age of War</h3>
+                    <p>Estratégia em tempo real através das eras</p>
                     <div class="game-meta">
                         <span class="game-category">Estratégia</span>
                         <span class="game-rating">★★★★☆</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Card de jogo 7 - Jogo Real -->
+            <div class="game-card" data-category="aventura">
+                <div class="game-image">
+                    <i>🗺️</i>
+                    <div class="game-overlay">
+                        <a href="https://www.crazygames.com/game/fireboy-and-watergirl-1-forest-temple" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3>Fireboy & Watergirl</h3>
+                    <p>Aventura cooperativa no templo da floresta</p>
+                    <div class="game-meta">
+                        <span class="game-category">Aventura</span>
+                        <span class="game-rating">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card de jogo 8 - Jogo Real -->
+            <div class="game-card" data-category="clássico">
+                <div class="game-image">
+                    <i>🐍</i>
+                    <div class="game-overlay">
+                        <a href="https://www.crazygames.com/game/snake" target="_blank" rel="noopener noreferrer" class="play-btn">Jogar Agora</a>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <h3>Snake</h3>
+                    <p>O clássico jogo da cobrinha</p>
+                    <div class="game-meta">
+                        <span class="game-category">Clássico</span>
+                        <span class="game-rating">★★★★★</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="featured-section">
+        <section class="featured-section" id="destaques">
             <div class="featured-title">
                 <h2>🌟 Jogos em Destaque</h2>
             </div>
@@ -574,9 +641,9 @@
                 <div class="featured-card">
                     <div class="featured-icon">🎮</div>
                     <div class="featured-content">
-                        <h3>Game of the Year 2024</h3>
-                        <p>Descubra o jogo mais premiado do ano</p>
-                        <button class="featured-btn">Ver Detalhes</button>
+                        <h3>Among Us</h3>
+                        <p>Descubra o impostor nesta aventura espacial</p>
+                        <a href="https://www.crazygames.com/game/among-us-online" target="_blank" rel="noopener noreferrer" class="featured-btn">Jogar Agora</a>
                     </div>
                 </div>
 
@@ -585,16 +652,16 @@
                     <div class="featured-content">
                         <h3>Multiplayer Online</h3>
                         <p>Jogue com amigos em tempo real</p>
-                        <button class="featured-btn">Ver Detalhes</button>
+                        <a href="https://www.crazygames.com/c/multiplayer" target="_blank" rel="noopener noreferrer" class="featured-btn">Ver Jogos</a>
                     </div>
                 </div>
 
                 <div class="featured-card">
                     <div class="featured-icon">🏆</div>
                     <div class="featured-content">
-                        <h3>Torneios Semanais</h3>
-                        <p>Participe e ganhe prêmios incríveis</p>
-                        <button class="featured-btn">Ver Detalhes</button>
+                        <h3>Novidades da Semana</h3>
+                        <p>Os jogos mais populares da semana</p>
+                        <a href="https://www.crazygames.com/top" target="_blank" rel="noopener noreferrer" class="featured-btn">Ver Top 10</a>
                     </div>
                 </div>
             </div>
@@ -631,10 +698,10 @@
             <div class="footer-section">
                 <h3>Redes Sociais</h3>
                 <div class="social-links">
-                    <a href="#" class="social-icon">📘</a>
-                    <a href="#" class="social-icon">🐦</a>
-                    <a href="#" class="social-icon">📷</a>
-                    <a href="#" class="social-icon">💬</a>
+                    <a href="#" class="social-icon" target="_blank">📘</a>
+                    <a href="#" class="social-icon" target="_blank">🐦</a>
+                    <a href="#" class="social-icon" target="_blank">📷</a>
+                    <a href="#" class="social-icon" target="_blank">💬</a>
                 </div>
             </div>
         </div>
@@ -643,5 +710,68 @@
             <p>&copy; 2024 GameZone. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        // Função para buscar jogos
+        function searchGames() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const games = document.querySelectorAll('.game-card');
+            
+            games.forEach(game => {
+                const title = game.querySelector('h3').textContent.toLowerCase();
+                const description = game.querySelector('p').textContent.toLowerCase();
+                const category = game.querySelector('.game-category').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+            
+            // Mostrar mensagem se nenhum jogo for encontrado
+            const visibleGames = document.querySelectorAll('.game-card[style="display: block"]');
+            if (visibleGames.length === 0) {
+                alert('Nenhum jogo encontrado para "' + searchTerm + '"');
+            }
+        }
+
+        // Função para filtrar por categoria
+        function filterGames(category) {
+            const games = document.querySelectorAll('.game-card');
+            
+            games.forEach(game => {
+                if (category === 'todos') {
+                    game.style.display = 'block';
+                } else {
+                    const gameCategory = game.getAttribute('data-category');
+                    if (gameCategory && gameCategory.includes(category)) {
+                        game.style.display = 'block';
+                    } else {
+                        game.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Adicionar evento de tecla Enter na busca
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchGames();
+            }
+        });
+
+        // Mostrar aviso de que os links abrem em nova aba
+        window.addEventListener('load', function() {
+            const warning = document.createElement('div');
+            warning.className = 'external-link-warning';
+            warning.innerHTML = '🔗 Os jogos abrem em uma nova aba';
+            document.body.appendChild(warning);
+            
+            setTimeout(() => {
+                warning.remove();
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
